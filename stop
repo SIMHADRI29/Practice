@@ -1,0 +1,49 @@
+[33mcommit 647c26ccf7c3e368f540a268d6a07a67d956ebfa[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmaster[m[33m, [m[1;31morigin/master[m[33m)[m
+Author: SIMHADRI29 <dharavathsimhadri29@gmail.com>
+Date:   Mon Nov 10 15:20:43 2025 +0530
+
+    Inital commit
+
+[1mdiff --git a/GetRequestSample.txt b/GetRequestSample.txt[m
+[1mnew file mode 100644[m
+[1mindex 0000000..37bf1cb[m
+[1m--- /dev/null[m
+[1m+++ b/GetRequestSample.txt[m
+[36m@@ -0,0 +1,30 @@[m
+[32m+[m[32mpackage rest.basic.testing;[m
+[32m+[m
+[32m+[m[32mimport io.restassured.RestAssured;[m
+[32m+[m[32mimport io.restassured.http.ContentType;[m
+[32m+[m
+[32m+[m[32mimport static io.restassured.RestAssured.given;[m
+[32m+[m[32mimport static org.hamcrest.Matchers.equalTo;[m
+[32m+[m
+[32m+[m[32mpublic class GetRequestSample {[m
+[32m+[m[41m	[m
+[32m+[m	[32m //BaseURI[m
+[32m+[m	[32mpublic static String baseURI = "https://maps.googleapis.com";[m
+[32m+[m[41m	[m
+[32m+[m	[32mpublic static void main(String args[]){[m
+[32m+[m[41m		[m
+[32m+[m		[32mRestAssured.baseURI = baseURI;[m
+[32m+[m		[32mgiven().[m
+[32m+[m		[32m param("location", "-33.8670522,151.1957362").[m
+[32m+[m		[32m param("radius", "500").[m
+[32m+[m		[32m param("type", "restaurant").[m
+[32m+[m		[32m param("key", "AIzaSyB-ZliaFkPtyfykn7E2nW2yxgBPAvRVUMo").[m
+[32m+[m		[32m when().[m
+[32m+[m		[32m get("/maps/api/place/nearbysearch/json").[m
+[32m+[m		[32m then().assertThat().statusCode(200).and().[m
+[32m+[m		[32m contentType(ContentType.JSON).and().[m
+[32m+[m		[32m body("results[0].name", equalTo("The Little Snail Restaurant") );[m
+[32m+[m		[32m System.out.println("Request is executed successfully");[m
+[32m+[m	[32m}[m
+[32m+[m[41m	[m
+[32m+[m[32m}[m
+[1mdiff --git a/input.txt b/input.txt[m
+[1mnew file mode 100644[m
+[1mindex 0000000..776321c[m
+[1m--- /dev/null[m
+[1m+++ b/input.txt[m
+[36m@@ -0,0 +1 @@[m
+[32m+[m[32m"Sample text"[m[41m [m
